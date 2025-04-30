@@ -6,10 +6,10 @@ spring:
 
   # java -jar fakesmtp-2.0.jar -p 2525
   # https://threadminions.wordpress.com/2019/06/25/alert-with-spring-boot-admin-server/
-  mail:
-    host: localhost
-    port: 2525
-    protocol: smtp
+#  mail:
+#    host: localhost
+#    port: 2525
+#    protocol: smtp
 
 # Spring Boot Admin Configuration
   boot:
@@ -36,15 +36,15 @@ spring:
       context-path: /
       routes:
         endpoints: info
-      notify:
-        mail:
-          to: jihed@gmail.com, chaabane@gmail.com
-          enabled: true
+#      notify:
+#        mail:
+#          to: jihed@gmail.com, chaabane@gmail.com
+#          enabled: true
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${EUREKA_ADDR:http://localhost:8761/eureka/}
 
 
 

@@ -7,6 +7,8 @@ pipeline {
         CONTAINER_NAME = 'container-springboot-conf-admin-server'
         // Port de l'application
         APP_PORT = '8763'
+        // eureka-server url : http://container-name:port
+        EUREKA_URL = 'http://springboot-conf-eureka-server:8761/eureka'
         // common-network
         DOCKER_NETWORK = 'springboot-network'
     }
@@ -68,7 +70,7 @@ pipeline {
                 script {
                     // Lancer le conteneur
                     sh """
-                        docker run -d --name ${CONTAINER_NAME} --network ${DOCKER_NETWORK} -p ${APP_PORT}:${APP_PORT} ${DOCKER_IMAGE}
+                        docker run -e EUREKA_ADDR=${EUREKA_URL} -d --name ${CONTAINER_NAME} --network ${DOCKER_NETWORK} -p ${APP_PORT}:${APP_PORT} ${DOCKER_IMAGE}
                     """
                 }
             }
