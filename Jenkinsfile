@@ -7,10 +7,11 @@ pipeline {
         CONTAINER_NAME = 'container-springboot-conf-admin-server'
         // Port de l'application
         APP_PORT = '8763'
-        // eureka-server url : http://container-name:port
-        EUREKA_URL = 'http://springboot-conf-eureka-server:8761/eureka'
         // common-network
         DOCKER_NETWORK = 'springboot-network'
+        
+        // eureka-server url.
+        EUREKA_URL = 'http://container-springboot-conf-eureka-server:8761/eureka/'
     }
     stages {
         stage('Checkout') {
