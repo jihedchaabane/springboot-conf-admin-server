@@ -30,6 +30,44 @@ pipeline {
                 }
             }
         }
+        
+        stage('Remove Docker Image') {
+            steps {
+                script {
+                    // Define the image name and tag
+                    // def imageName = "my-app"
+                    // def imageTag = "latest"
+                    // def fullImage = "${imageName}:${imageTag}"
+                    
+                    // Check if the image exists and remove it
+                    
+                    //sh """
+                    //    if [ \$(docker images -q ${fullImage}) ]; then
+                    //        echo "Removing existing Docker image ${fullImage}"
+                    //        docker rmi ${fullImage}
+                    //    else
+                    //        echo "Docker image ${fullImage} does not exist"
+                    //    fi
+                    //    if [ \$(docker images -q ${fullImage}) ]; then
+                    //        echo "Removing existing Docker image ${fullImage}"
+                    //        docker rmi ${fullImage}
+                    //    else
+                    //        echo "Docker image ${fullImage} does not exist"
+                    //    fi
+                    //"""
+                    
+                    sh """
+                        if [ \$(docker images -q ${DOCKER_IMAGE}) ]; then
+                            echo "Removing existing Docker image ${DOCKER_IMAGE}"
+                            docker rmi ${DOCKER_IMAGE}
+                        else
+                            echo "Docker image ${DOCKER_IMAGE} n existe pas !"
+                        fi
+                    """
+                }
+            }
+        }
+        
         stage('Build Docker Image') {
             steps {
                 script {
