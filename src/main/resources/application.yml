@@ -45,7 +45,10 @@ eureka:
   client:
     service-url:
       defaultZone: ${EUREKA_ADDR:http://localhost:8761/eureka/}
-
+  instance:
+    metadata-map:
+      # Indique que ce microservice doit être inclus dans le swagger de 'gr-conf-swagger-aggregator'' (désactiver le sinon sinon).
+      swagger.aggregator.enabled: false
 
 
 
