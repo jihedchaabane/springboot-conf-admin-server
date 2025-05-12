@@ -127,7 +127,11 @@ pipeline {
                 script {
                     // Lancer le conteneur
                     sh """
-                        docker run -e EUREKA_ADDR=${EUREKA_URL} -d --name ${CONTAINER_NAME} --network ${DOCKER_NETWORK} -p ${APP_PORT}:${APP_PORT} ${DOCKER_IMAGE}
+                        docker run \
+                        	-e EUREKA_ADDR=${EUREKA_URL} \
+                        	-d --name ${CONTAINER_NAME} --network ${DOCKER_NETWORK} \
+                        	-p ${APP_PORT}:${APP_PORT} \
+                        	${DOCKER_IMAGE}
                     """
                 }
             }
