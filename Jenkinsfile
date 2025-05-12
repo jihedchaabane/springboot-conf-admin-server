@@ -12,6 +12,8 @@ pipeline {
         APP_PORT = '8763'
         // common-network
         DOCKER_NETWORK = 'springboot-network'
+        
+        CONFIG_SERVER_ADDR = 'http://container-springboot-conf-config-server:8762'
     }
     stages {
         stage('Checkout') {
@@ -125,6 +127,8 @@ pipeline {
                     // Lancer le conteneur
                     sh """
                         docker run \
+                        	-e SPRING_PROFILES_ACTIVE=${ACTIVE_PROFILE} \
+                        	-e CONFIG_SERVER_ADDR=${CONFIG_SERVER_ADDR} \
                         	-d --name ${CONTAINER_NAME} --network ${DOCKER_NETWORK} \
                         	-p ${APP_PORT}:${APP_PORT} \
                         	${DOCKER_IMAGE}
