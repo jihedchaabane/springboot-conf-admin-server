@@ -22,6 +22,19 @@ public class CustomUserDetailsService implements UserDetailsService {
         UserAccess userAccess = userAccessRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
 
+        if (!userAccess.isEnabled()) {
+			throw new UsernameNotFoundException("User is disabled!");
+		}
+        if (!userAccess.isAccountNonExpired()) {
+			throw new UsernameNotFoundException("User account is expired!");
+		}
+        if (!userAccess.isAccountNonLocked()) {
+			throw new UsernameNotFoundException("User account is locked!");
+		}
+        if (!userAccess.isCredentialsNonExpired()) {
+			throw new UsernameNotFoundException("User credentials are expired!");
+		}
+        
         return new org.springframework.security.core.userdetails.User(
         		userAccess.getUsername(),
         		userAccess.getPassword(),
@@ -29,9 +42,11 @@ public class CustomUserDetailsService implements UserDetailsService {
         		userAccess.isAccountNonExpired(),
         		userAccess.isCredentialsNonExpired(),
         		userAccess.isAccountNonLocked(),
-//                userAccess.getAuthorities().stream()
-//                        .map(SimpleGrantedAuthority::new)
-//                        .toList()
+        		/**
+                userAccess.getAuthorities().stream()
+                        .map(SimpleGrantedAuthority::new)
+                        .toList()
+                */
         		userAccess.getRoles().stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .toList()

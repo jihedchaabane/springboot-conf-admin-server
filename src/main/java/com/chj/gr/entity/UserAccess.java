@@ -28,12 +28,12 @@ public class UserAccess {
 
 	@Column(nullable = false)
 	private boolean enabled;
-
-//	@ElementCollection(fetch = FetchType.EAGER)
-//	@CollectionTable(name = "gr_conf_access_user_authorities", joinColumns = @JoinColumn(name = "user_id"))
-//	@Column(name = "authority")
-//	private Set<String> authorities;
-	
+	/**
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "gr_conf_access_user_authorities", joinColumns = @JoinColumn(name = "user_id"))
+	@Column(name = "authority")
+	private Set<String> authorities;
+	*/
 	@ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name = "gr_conf_access_user_roles",
@@ -82,14 +82,14 @@ public class UserAccess {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-
-//	public Set<String> getAuthorities() {
-//		return authorities;
-//	}
-//
-//	public void setAuthorities(Set<String> authorities) {
-//		this.authorities = authorities;
-//	}
+	/**
+	public Set<String> getAuthorities() {
+		return authorities;
+	}
+	public void setAuthorities(Set<String> authorities) {
+		this.authorities = authorities;
+	}
+	*/
 	
 	public boolean isAccountNonExpired() {
 		return accountNonExpired;
