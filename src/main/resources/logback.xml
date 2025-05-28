@@ -23,8 +23,10 @@
 		</encoder>
 	</appender>
 
-	<logger name="com.chj.gr" level="INFO">
-	</logger>
+	<logger name="com.chj.gr" level="INFO"></logger>
+	<logger name="de.codecentric.boot.admin" level="DEBUG"></logger> 
+    <logger name="com.netflix.discovery" level="DEBUG"></logger>
+    <logger name="org.springframework.security" level="DEBUG"></logger>
 
 	<root level="info">
 		<appender-ref ref="STDOUT" />
