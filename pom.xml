@@ -14,6 +14,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.7.18</version>
+		<relativePath />
 	</parent>
 
 	<properties>
@@ -83,6 +84,11 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+		    <groupId>com.chj.gr</groupId>
+		    <artifactId>gr-conf-common-params</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		
 		<!--

@@ -33,13 +33,13 @@ CREATE TABLE gr_conf_access_user_roles (
     CONSTRAINT fk_role_id FOREIGN KEY (role_id) REFERENCES gr_conf_access_roles(id)
 );
 
-
-\dp oauth2_registered_client
+\dt
+\dp
 GRANT ALL ON TABLE gr_conf_access_user TO postgres_data_source;
 --GRANT ALL ON TABLE gr_conf_user_authorities TO postgres_data_source;
 GRANT ALL ON TABLE gr_conf_access_roles TO postgres_data_source;
 GRANT ALL ON TABLE gr_conf_access_user_roles TO postgres_data_source;
-
+\dp
 
 INSERT INTO gr_conf_access_user (username, password, enabled, account_non_expired, credentials_non_expired, account_non_locked) VALUES
 ('admin', '$2a$10$vJaSzy8EhH/HAB1UDaE42uFKu54JQlXqagqqz8pyGi7ZrAEmf.Opy', true, true, true, true),
